@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{%block titulo%} Enviar Mensaje {%endblock%}
+
+{% block presentacion %}
+    <h2>Enviar Mensaje</h2>
+    <p>En esta seccion, formule y envie su mensaje por favor</p>
+{%endblock%}
+
+{% block contenido %} 
+    <form method="post">
+        {% csrf_token %}
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" required>
+
+        <label for="contenido">Contenido:</label>
+        <textarea id="contenido" name="contenido" required></textarea>
+
+        <button type="submit">Crear Publicación</button>
+    </form>
+    <br><br>
+{% endblock %}
+
+{% block pie %}{%endblock%}

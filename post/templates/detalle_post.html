@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block titulo %} Detalles {% endblock %}
+
+{% block presentacion %}
+    <h2>Detalles del Post</h2>
+{% endblock %}
+
+{% block contenido %} 
+    <p><strong>Fecha de publicación:</strong> {{ publicacion.fecha_publicacion }}</p>
+    <p><strong>Autor:</strong> {{ publicacion.autor }}</p>
+    <p>{{ publicacion.contenido }}</p>
+
+    <a href="{% url 'ver_publicaciones' %}">Volver a la lista</a>
+    
+    <form method="POST" action="{% url 'eliminar_publicacion' publicacion.id %}" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar esta publicación?');">Eliminar Publicación</button>
+    </form>
+{% endblock %}
+
+{% block pie %}{% endblock %}

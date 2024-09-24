@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block titulo %} Ver Mensaje {% endblock %}
+
+{% block presentacion %}
+    <h2>Ver Mensajes</h2>
+    <p>En esta sección puedes ver los mensajes y eliminarlos si es necesario.</p>
+{% endblock %}
+
+{% block contenido %}
+<ul>
+    {% for publicacion in publicaciones %}
+        <li>
+            <h2>{{ publicacion.titulo }}</h2>
+            <p><strong>Fecha de publicación:</strong> {{ publicacion.fecha_publicacion }}</p>
+            <p><strong>Autor:</strong> {{ publicacion.autor }}</p>
+            <a href="{% url 'detalle_publicacion' publicacion.id %}">Ver Detalle</a>  <!-- Enlace para ver detalle -->
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

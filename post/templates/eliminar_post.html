@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block titulo %} Eliminar Mensaje {% endblock %}
+
+{% block contenido %}
+    <h1>Eliminar Publicación</h1>
+    <p>¿Estás seguro de que deseas eliminar la publicación: <strong>{{ publicacion.titulo }}</strong>?</p>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Confirmar Eliminación</button>
+        <a href="{% url 'ver_publicaciones' %}">Cancelar</a>
+    </form>
+{%endblock%}

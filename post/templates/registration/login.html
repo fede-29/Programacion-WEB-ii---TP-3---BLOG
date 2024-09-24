@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{%block titulo%} Enviar Mensaje {%endblock%}
+
+{% block presentacion %}
+    <h2>Sesion</h2>
+    <p>Iniciar Sesion</p>
+{%endblock%}
+
+{% block contenido %} 
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Iniciar Sesión</button>
+    </form>
+    <p>No tienes una cuenta? <a href="{% url 'registro' %}">Regístrate aquí</a></p>
+    <br><br>
+{% endblock %}
+
+{% block pie %}{%endblock%}

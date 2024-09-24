@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block titulo %} Principal {% endblock %}</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    </head>
+    <body>
+        <h2> Programacion WEB II</h2>
+        <nav>
+            <ul>
+                <li><a href="{% url 'pagina_principal' %}"><h3>Inicio</h3></a></li>
+                <li><a href="{% url 'crear_publicacion' %}"><h3>Escribir Post</h3></a></li>
+                <li><a href="{% url 'ver_publicaciones' %}"><h3>Ver Post</h3></a></li>
+                {% if user.is_authenticated %}
+                    <li><h3>Bienvenido, {{ user.username }}!</h3></li>
+                    <li><a href="{% url 'logout' %}"><h3>Cerrar sesión</h3></a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}"><h3>Iniciar sesión</h3></a></li>
+                    <li><a href="{% url 'registro' %}"><h3>Registro</h3></a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% block presentacion %}
+        <div>
+            <h2>Bienvenido</h2>
+            <p>En este trabajo practico la tarea era poder crear un blog con autenticacion</p>
+        </div>
+        {% endblock %}
+
+        {% block contenido %}{% endblock %}
+
+        <footer>
+            <h2>Docente: Julio Casco</h2>
+            <h2>Estudiante: Federico Sassenberg</h2><br>
+        </footer>
+    </body>
+</html>
