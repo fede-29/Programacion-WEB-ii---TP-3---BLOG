@@ -5,7 +5,7 @@ class UsuariosRegistrados:
         self.get_response = get_response
 
     def __call__(self, request):
-        rutas_protegidas = ['/ver_post/', '/escribir_post/', '/eliminar_post/']  # Agrega más rutas según sea necesario
+        rutas_protegidas = ['/ver_post/', '/escribir_post/', '/eliminar_post/']
 
         if not request.user.is_authenticated and request.path in rutas_protegidas:
             return redirect('login')  

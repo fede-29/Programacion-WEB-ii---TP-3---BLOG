@@ -10,13 +10,12 @@ def crear_publicacion(request):
         titulo = request.POST.get('titulo')
         contenido = request.POST.get('contenido')
 
-        # Crear la publicación con el usuario autenticado como autor
         Publicacion.objects.create(
             titulo=titulo,
             contenido=contenido,
-            autor=request.user  # Siempre será un usuario autenticado
+            autor=request.user  
         )
-        return redirect('ver_publicaciones')  # Redirige a la vista que muestre las publicaciones
+        return redirect('ver_publicaciones')  
 
     return render(request, 'crear_post.html')
 
@@ -46,7 +45,7 @@ def registro_usuario(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Cuenta creada con éxito. Puedes iniciar sesión.')
-            return redirect('login')  # Redirige a la página de inicio de sesión
+            return redirect('login')
     else:
         form = UserCreationForm()
         pass
